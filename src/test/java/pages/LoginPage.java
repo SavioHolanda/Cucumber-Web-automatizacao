@@ -28,7 +28,10 @@ public class LoginPage {
     WebElement cliquesubmitLogin;
 
     @FindBy(linkText = "Boas vindas, admin!")
-    WebElement validarLogin;
+    WebElement mensagemLoginValido;
+
+    @FindBy(css = ".toast.rounded")
+    WebElement mensagemLoginInvalido;
 
     public void escreverUsuario(String usuario){
         cliqueUsuario.click();
@@ -44,8 +47,11 @@ public class LoginPage {
         cliquesubmitLogin.click();
     }
 
-    public String validarLogin(){
-        return validarLogin.getText();
+    public String mensagemLoginValido(){
+        return mensagemLoginValido.getText();
     }
 
+    public String mensagemLoginInvalido(){
+        return mensagemLoginInvalido.getText();
+    }
 }

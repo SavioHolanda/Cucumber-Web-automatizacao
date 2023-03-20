@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pages.LoginPage;
 
+import java.time.Duration;
+
 public class LoginStep {
     public WebDriver driver;
     public LoginPage lp;
@@ -21,6 +23,8 @@ public class LoginStep {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         lp= new LoginPage(driver);
     }
     @Dado("que estou na tela de login do sistema")
@@ -39,7 +43,28 @@ public class LoginStep {
     }
     @Entao("acesso a tela principal do sistema")
     public void acessoATelaPrincipalDoSistema() {
-       // Assert.assertEquals("Boas vindas, admin!",lp.validarLogin());
+        Assert.assertEquals("Boas vindas, admin!",lp.mensagemLoginValido());
+    }
+
+    @Quando("preencho o usuario e senha invalidos")
+    public void preenchoOUsuarioESenhaInvalidos() {
+        lp.escreverUsuario("admin");
+        lp.escreverSenha("123");
+    }
+    @Entao("apresenta uma mensagem {string}")
+    public void apresentaUmaMensagem(String mensagem) {
+        Assert.assertEquals(mensagem, lp.mensagemLoginInvalido());
+
+    }
+    @Entao("continua na tela de login")
+    public void continuaNaTelaDeLogin() {
+
+    }
+
+    @Quando("preencho o usuario e senha em branco")
+    public void preenchoOUsuarioESenhaEmBranco() {
+        lp.escreverUsuario(" ");
+        lp.escreverSenha(" ");
     }
 
     @After
