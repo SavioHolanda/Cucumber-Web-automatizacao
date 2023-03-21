@@ -54,11 +54,10 @@ public class LoginStep {
     @Entao("apresenta uma mensagem {string}")
     public void apresentaUmaMensagem(String mensagem) {
         Assert.assertEquals(mensagem, lp.mensagemLoginInvalido());
-
     }
     @Entao("continua na tela de login")
     public void continuaNaTelaDeLogin() {
-
+        Assert.assertEquals(lp.telaLogin(),"Acessar a Lojinha");
     }
 
     @Quando("preencho o usuario e senha em branco")

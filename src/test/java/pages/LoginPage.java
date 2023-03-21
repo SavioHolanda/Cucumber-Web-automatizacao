@@ -33,6 +33,9 @@ public class LoginPage {
     @FindBy(css = ".toast.rounded")
     WebElement mensagemLoginInvalido;
 
+    @FindBy(css = "h4")
+    WebElement telaLogin;
+
     public void escreverUsuario(String usuario){
         cliqueUsuario.click();
         txtUsuario.sendKeys(usuario);
@@ -53,5 +56,9 @@ public class LoginPage {
 
     public String mensagemLoginInvalido(){
         return mensagemLoginInvalido.getText();
+    }
+
+    public String telaLogin(){
+        return telaLogin.getText();
     }
 }
