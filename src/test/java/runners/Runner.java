@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/login.feature",
+        features = "src/test/resources/features/produto.feature",
         glue = "steps",
         monochrome = true,
         snippets = CucumberOptions.SnippetType.CAMELCASE,
