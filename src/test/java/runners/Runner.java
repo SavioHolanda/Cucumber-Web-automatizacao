@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/produto.feature",
+        features = {"src/test/resources/features/"},
+        //tags = "@Login",
         glue = "steps",
         monochrome = true,
         snippets = CucumberOptions.SnippetType.CAMELCASE,
@@ -14,5 +15,4 @@ import org.junit.runner.RunWith;
         plugin = {"pretty","html:target/report-html","json:target/report.json"}
 )
 public class Runner {
-
 }
